@@ -20,7 +20,7 @@ import requests
 import yaml
 
 
-VERSION = "2.3.2"
+VERSION = "2.4.0"
 
 
 # === SMTP邮件配置 ===
