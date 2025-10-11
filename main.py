@@ -20,7 +20,7 @@ import requests
 import yaml
 
 
-VERSION = "2.4.2"
+VERSION = "2.4.3"
 
 
 # === SMTP邮件配置 ===
@@ -83,25 +83,25 @@ def load_config():
         "FEISHU_MESSAGE_SEPARATOR": config_data["notification"][
             "feishu_message_separator"
         ],
-        "SILENT_PUSH": {
+        "PUSH_WINDOW": {
             "ENABLED": config_data["notification"]
-            .get("silent_push", {})
+            .get("push_window", {})
             .get("enabled", False),
             "TIME_RANGE": {
                 "START": config_data["notification"]
-                .get("silent_push", {})
+                .get("push_window", {})
                 .get("time_range", {})
                 .get("start", "08:00"),
                 "END": config_data["notification"]
-                .get("silent_push", {})
+                .get("push_window", {})
                 .get("time_range", {})
                 .get("end", "22:00"),
             },
             "ONCE_PER_DAY": config_data["notification"]
-            .get("silent_push", {})
+            .get("push_window", {})
             .get("once_per_day", True),
             "RECORD_RETENTION_DAYS": config_data["notification"]
-            .get("silent_push", {})
+            .get("push_window", {})
             .get("push_record_retention_days", 7),
         },
         "WEIGHT_CONFIG": {
@@ -328,7 +328,7 @@ class PushRecordManager:
 
     def cleanup_old_records(self):
         """清理过期的推送记录"""
-        retention_days = CONFIG["SILENT_PUSH"]["RECORD_RETENTION_DAYS"]
+        retention_days = CONFIG["PUSH_WINDOW"]["RECORD_RETENTION_DAYS"]
         current_time = get_beijing_time()
 
         for record_file in self.record_dir.glob("push_record_*.json"):
@@ -3215,24 +3215,24 @@ def send_to_notifications(
     """发送数据到多个通知平台"""
     results = {}
 
-    if CONFIG["SILENT_PUSH"]["ENABLED"]:
+    if CONFIG["PUSH_WINDOW"]["ENABLED"]:
         push_manager = PushRecordManager()
-        time_range_start = CONFIG["SILENT_PUSH"]["TIME_RANGE"]["START"]
-        time_range_end = CONFIG["SILENT_PUSH"]["TIME_RANGE"]["END"]
+        time_range_start = CONFIG["PUSH_WINDOW"]["TIME_RANGE"]["START"]
+        time_range_end = CONFIG["PUSH_WINDOW"]["TIME_RANGE"]["END"]
 
         if not push_manager.is_in_time_range(time_range_start, time_range_end):
             now = get_beijing_time()
             print(
-                f"静默模式：当前时间 {now.strftime('%H:%M')} 不在推送时间范围 {time_range_start}-{time_range_end} 内，跳过推送"
+                f"推送窗口控制：当前时间 {now.strftime('%H:%M')} 不在推送时间窗口 {time_range_start}-{time_range_end} 内，跳过推送"
             )
             return results
 
-        if CONFIG["SILENT_PUSH"]["ONCE_PER_DAY"]:
+        if CONFIG["PUSH_WINDOW"]["ONCE_PER_DAY"]:
             if push_manager.has_pushed_today():
-                print(f"静默模式：今天已推送过，跳过本次推送")
+                print(f"推送窗口控制：今天已推送过，跳过本次推送")
                 return results
             else:
-                print(f"静默模式：今天首次推送")
+                print(f"推送窗口控制：今天首次推送")
 
     report_data = prepare_report_data(stats, failed_ids, new_titles, id_to_name, mode)
 
@@ -3312,8 +3312,8 @@ def send_to_notifications(
 
     # 如果成功发送了任何通知，且启用了每天只推一次，则记录推送
     if (
-        CONFIG["SILENT_PUSH"]["ENABLED"]
-        and CONFIG["SILENT_PUSH"]["ONCE_PER_DAY"]
+        CONFIG["PUSH_WINDOW"]["ENABLED"]
+        and CONFIG["PUSH_WINDOW"]["ONCE_PER_DAY"]
         and any(results.values())
     ):
         push_manager = PushRecordManager()
