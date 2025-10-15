@@ -37,6 +37,8 @@ Microsoft
 NVIDIA
 黄仁勋
 
+小米
+xiaomi
 雷军
 
 AMD
