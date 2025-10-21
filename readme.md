@@ -11,7 +11,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/sansan0/TrendRadar?style=flat-square&logo=github&color=yellow)](https://github.com/sansan0/TrendRadar/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/sansan0/TrendRadar?style=flat-square&logo=github&color=blue)](https://github.com/sansan0/TrendRadar/network/members)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v3.0.0-green.svg?style=flat-square)](https://github.com/sansan0/TrendRadar)
+[![Version](https://img.shields.io/badge/version-v3.0.2-green.svg?style=flat-square)](https://github.com/sansan0/TrendRadar)
 
 [![企业微信通知](https://img.shields.io/badge/企业微信-通知-00D4AA?style=flat-square)](https://work.weixin.qq.com/)
 [![Telegram通知](https://img.shields.io/badge/Telegram-通知-00D4AA?style=flat-square)](https://telegram.org/)
@@ -500,6 +500,11 @@ GitHub 一键 Fork 即可使用，无需编程基础。
 - **小版本更新**：从 v2.x 升级到 v2.y, 用本项目的 `main.py` 代码替换你 fork 仓库中的对应文件
 - **大版本升级**：从 v1.x 升级到 v2.y, 建议删除现有 fork 后重新 fork，这样更省力且避免配置冲突
 
+### 2025/10/21 - v3.0.2
+
+- **更新内容**：
+    - 必然修复 ntfy 推送编码问题
+
 ### 2025/10/20 - v3.0.0
 
 **重大更新 - AI 分析功能上线** 🤖
@@ -509,11 +514,6 @@ GitHub 一键 Fork 即可使用，无需编程基础。
   - 支持13种智能分析工具：基础查询、智能检索、高级分析、系统管理
   - 自然语言交互：通过对话方式查询和分析新闻数据
   - 多客户端支持：Claude Desktop、Cherry Studio、Cursor、Cline 等
-
-- **快速部署方案**：
-  - Cherry Studio 一键部署（推荐新手）：GUI 配置，5分钟完成
-  - Claude Desktop 配置（技术用户）：JSON 配置文件
-  - 完整的部署文档和使用指南
 
 - **分析能力**：
   - 话题趋势分析（热度追踪、生命周期、爆火检测、趋势预测）
@@ -1314,13 +1314,8 @@ Cherry Studio 提供 GUI 配置界面，可快速部署。
 > 心意到就行，收到的**点赞**用于提高开发者开源的积极性。**点赞**已收录于**致谢名单**
 
 - **GitHub Issues**：适合针对性强的解答。提问时请提供完整信息（截图、错误日志、系统环境等）。
-- **公众号交流**：适合快速咨询。尽量别私信，建议优先在相关文章下的公共留言区交流，有个收敛度
+- **公众号交流**：适合快速咨询。建议优先在相关文章下的公共留言区交流，如私信，请文明礼貌用语😉
 
-> 对于极少数私信中表达的那种'摸索了好久都部署不了'的焦急心态，我能理解，但我认为这不足以成为我必须立刻抽空帮你解决的理由
->
-> 请舒缓情绪后再表达，别让我觉得'我分享了项目，你部署不了反而首先怪我'，对于这种非商业化的个人开源小作品，多一点担待~好不？😉
->
-> 项目的 issues 和留言我还算卖力解决，除了有自己写的项目哪怕再烂也得含泪😢维护的念头，主要还是因为有上面感谢的那群人的支持😘
 
 |公众号关注 |微信点赞 | 支付宝点赞 |
 |:---:|:---:|:---:| 
