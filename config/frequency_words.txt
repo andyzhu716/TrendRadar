@@ -1,37 +1,5 @@
-DeepSeek
-
-华为
-鸿蒙
-HarmonyOS
-任正非
-
-比亚迪
-王传福
-
-大疆
-DJI
-
-宇树
-王兴兴
-
-稳定币
-
-ai
-+医疗
-!gai
-
-京东
-刘强东
-
-字节
-bytedance
-张一鸣
-
 特斯拉
 马斯克
-
-微软
-Microsoft
 
 英伟达
 NVIDIA
@@ -40,8 +8,6 @@ NVIDIA
 小米
 xiaomi
 雷军
-
-AMD
 
 谷歌
 google
@@ -55,11 +21,6 @@ sora
 claude
 claude code
 Anthropic
-
-iphone
-ipad
-mac
-ios
 
 ai
 !gai
@@ -95,19 +56,6 @@ ai
 
 教育
 高考
-
-国庆
-中秋
-
-签证
-k签证
-k字签证
-
-改革
-新质生产力
-农村
-宅基地
-+要素
 
 改革
 +高考
